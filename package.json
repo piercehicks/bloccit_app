@@ -5,15 +5,15 @@
   "main": "src/server.js",
   "scripts": {
     "test": "set NODE_ENV=test&& jasmine",
-      "start": "node src/server.js"
+    "start": "node src/server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jasmine": "^3.0.0",
-    "request": "^2.83.0"
+    "jasmine": "^3.4.0",
+    "request": "^2.88.0"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.17.1"
   }
 }
