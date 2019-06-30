@@ -5,8 +5,8 @@
     "database": "bloccitApp-dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "logging": false,
-    "operatorsAliases": false
+    "logging": false
+
   },
   "test": {
     "username": "piercehicks",
@@ -14,8 +14,8 @@
     "database": "bloccitApp-test",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "logging": false,
-    "operatorsAliases": false
+    "logging": false
+
   },
   "production": {
     "username": "root",
@@ -23,7 +23,7 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "operatorsAliases": false,
+
     "use_env_variable": "DATABASE_URL"
   }
 }
