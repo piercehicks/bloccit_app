@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 //#1
 const faker = require("faker");
@@ -6,7 +6,7 @@ const faker = require("faker");
 //#2
 let topics = [];
 
-for(let i = 1 ; i <= 15 ; i++){
+for (let i = 1 ; i <= 15 ; i++) {
   topics.push({
     title: faker.hacker.noun(),
     description: faker.hacker.phrase(),
