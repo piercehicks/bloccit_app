@@ -10,7 +10,7 @@
     <% include ../static/partials/navbar.ejs %>
 
       <h1>Topics</h1>
-
+         <a href="/topics/new" class="btn btn-success">New Topic</a>
       <ul class="list-group">
         <!-- #1 -->
         <% topics.forEach((topic) => { %>
@@ -24,6 +24,7 @@
       </ul>
 
   </main>
+  <% include ../static/partials/baseScripts.ejs %>
 </body>
 
 </html>
