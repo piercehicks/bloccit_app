@@ -5,8 +5,8 @@
     "database": "bloccitApp-dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "logging": false
-
+    "logging": false,
+    "operatorsAliases": false
   },
   "test": {
     "username": "piercehicks",
@@ -14,16 +14,11 @@
     "database": "bloccitApp-test",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "logging": false
-
+    "logging": false,
+    "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
     "dialect": "postgres",
-
-    "use_env_variable": "DATABASE_URL"
-  }
+    "use_env_variable": "HEROKU_POSTGRESQL_SILVER_URL"
+   }
 }

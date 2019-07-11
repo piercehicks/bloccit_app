@@ -25,12 +25,14 @@ module.exports = {
  },
  getTopic(id, callback) {
    return Topic.findByPk(id, {
-               include: [{
-                   model: Post,
-                   as: "posts"
-               }]
-           })
-         .then(topic => {
+     include: [
+       {
+         model: Post,
+         as: "posts"
+       }
+     ]
+   })
+   .then(topic => {
        callback(null, topic);
      })
      .catch(err => {
