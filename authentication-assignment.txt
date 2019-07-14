@@ -1,0 +1,18 @@
+Strategy chosen: Passport-google-oauth
+
+Question:
+View strategies available for authenticating with Passport.
+Pick a strategy to study and write a high-level explanation of how it works.
+This explanation does not need to be technical.
+
+Google – Passport
+http://www.passportjs.org/packages/passport-google-oauth/
+
+Using google authentication strategy with passport is a safe choice becuase so many
+users have google account already. The high level steps to implement are...
+-	Set up to use googleStrat in text editor.
+-	Use Google API to authenticate people on our website using their google accounts.
+-	Create credentials for Google API and call from web server on node js and
+choose from drop-down window what personal information we'll need from the user data.
+-	Then add ClientID to app.
+-	Then add ClientSecret to app.
