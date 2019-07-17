@@ -18,7 +18,7 @@ describe("routes : posts", () => {
        email: "starman@tesla.com",
        password: "Trekkie4lyfe"
      }).then(user => {
-       this.user = use;
+       this.user = user;
 
        Topic.create(
         {
