@@ -20,14 +20,13 @@ module.exports = {
        resave: false,
        saveUninitialized: false,
        cookie: {
-         cookie: { maxAge: 1.21e+9 }
+         maxAge: 1.21e9
        }
      })
    );
    app.use(flash());
    passportConfig.init(app);
-
-   app.use((req,res,next) => {
+   app.use((req, res, next) => {
      res.locals.currentUser = req.user;
      next();
    })
