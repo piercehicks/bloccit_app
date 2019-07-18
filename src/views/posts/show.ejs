@@ -5,25 +5,27 @@
   <% include ../static/partials/head.ejs %>
 </head>
 
-body>
+<body>
   <% include ../static/partials/navbar.ejs %>
 
-  <main class="container">
-     <% include ../static/partials/messages.ejs %>
+    <main class="container">
+      <% include ../static/partials/messages.ejs %>
+        <h1>
+          <%= post.title %>
+        </h1>
+        <% if(currentUser && (currentUser.isOwner || currentUser.isAdmin)) { %>
+          <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
+          <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+          <% } %>
 
-       <h1>
-         <%= post.title %>
-       </h1>
-       <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
-       <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
-         <button type="submit" class="btn btn-danger">Delete</button>
-       </form>
-       <p>
-         <%= post.body %>
-       </p>
-   </main>
+            <p>
+              <%= post.body %>
+            </p>
+    </main>
 
-   <% include ../static/partials/baseScripts.ejs %>
+    <% include ../static/partials/baseScripts.ejs %>
 
 </body>
 

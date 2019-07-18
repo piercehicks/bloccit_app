@@ -19,7 +19,6 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
   },
-
   down: (queryInterface, Sequelize) => {
     /*
       Add reverting commands here.

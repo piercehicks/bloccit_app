@@ -11,7 +11,6 @@ module.exports = {
       email: {
         allowNull: false,
         unique: true,
-// #1
         validate: {
           isEmail: { msg: "must be a valid email" }
    },

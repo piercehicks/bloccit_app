@@ -1,7 +1,6 @@
 const topicQueries = require("../db/queries.topics.js");
 const Authorizer = require("../policies/topic");
 
-
 module.exports = {
   index(req, res, next) {
     topicQueries.getAllTopics((err, topics) => {
@@ -81,7 +80,7 @@ module.exports = {
       if (err || topic == null) {
         res.redirect(404, `/topics/${req.params.id}/edit`);
       } else {
-          res.redirect(`/topics/${req.params.id}`);
+        res.redirect(`/topics/${req.params.id}`);
       }
     });
   }
