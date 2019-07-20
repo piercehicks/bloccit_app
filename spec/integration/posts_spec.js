@@ -182,7 +182,6 @@ describe("routes : posts", () => {
       it("should render a new post form", done => {
         request.get(`${base}/${this.topic.id}/posts/new`, (err, res, body) => {
           expect(err).toBeNull();
-          console.log(body);
           expect(body).toContain("New Post");
           done();
         });
