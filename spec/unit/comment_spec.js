@@ -101,11 +101,10 @@ describe("Comment", () => {
   describe("#setUser()", () => {
     it("should associate a comment and a user together", done => {
       User.create({
-        email: "bob@example.com",
-        password: "password"
+        email: "timmy45@example.com",
+        password: "password1"
       }).then(newUser => {
         expect(this.comment.userId).toBe(this.user.id);
-
         this.comment.setUser(newUser).then(comment => {
           expect(comment.userId).toBe(newUser.id);
           done();

@@ -12,7 +12,7 @@ describe("routes : posts", () => {
     this.topic;
     this.post;
     this.user;
-    
+
     sequelize.sync({ force: true }).then(res => {
       User.create({
         email: "starman@tesla.com",
@@ -46,6 +46,7 @@ describe("routes : posts", () => {
       });
     });
   });
+
   describe("GET /topics/:topicId/posts/new", () => {
     it("should render a new post form", done => {
       request.get(`${base}/${this.topic.id}/posts/new`, (err, res, body) => {
@@ -55,6 +56,7 @@ describe("routes : posts", () => {
       });
     });
   });
+
   describe("POST /topics/:topicId/posts/create", () => {
     it("should create a new post and redirect", done => {
       const options = {
@@ -82,16 +84,17 @@ describe("routes : posts", () => {
           });
       });
     });
+
     it("should not create a new post that fails validations", done => {
       const options = {
         url: `${base}/${this.topic.id}/posts/create`,
         form: {
-          title: "a",
-          body: "b"
+          title: "1",
+          body: "2"
         }
       };
       request.post(options, (err, req, body) => {
-        Post.findOne({ where: { title: "a" } })
+        Post.findOne({ where: { title: "1" } })
           .then(post => {
             expect(post).toBeNull();
             done();
@@ -103,6 +106,7 @@ describe("routes : posts", () => {
       });
     });
   });
+
   describe("GET /topics/:topicId/posts/:id", () => {
     it("should render a view with the selected post", done => {
       request.get(
@@ -115,9 +119,11 @@ describe("routes : posts", () => {
       );
     });
   });
+
   describe("POST /topics/:topicId/posts/:id/destroy", () => {
     it("should delete the post with the associated ID", done => {
       expect(this.post.id).toBe(1);
+
       request.post(
         `${base}/${this.topic.id}/posts/${this.post.id}/destroy`,
         (err, res, body) => {
@@ -130,6 +136,7 @@ describe("routes : posts", () => {
       );
     });
   });
+
   describe("GET /topics/:topicId/posts/:id/edit", () => {
     it("should render a view with an edit post form", done => {
       request.get(
@@ -143,6 +150,7 @@ describe("routes : posts", () => {
       );
     });
   });
+
   describe("POST /topics/:topicId/posts/:id/update", () => {
     it("should return a status code 302", done => {
       request.post(
@@ -159,6 +167,7 @@ describe("routes : posts", () => {
         }
       );
     });
+
     it("should update the post with the given values", done => {
       const options = {
         url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
