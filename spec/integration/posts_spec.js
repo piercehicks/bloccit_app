@@ -64,7 +64,7 @@ describe("routes : posts", () => {
         form: {
           title: "Watching snow melt",
           body:
-            "Without a doubt my favoriting things to do besides watching paint dry!"
+            "Without a doubt my favorite things to do besides watching paint dry!"
         }
       };
       request.post(options, (err, res, body) => {
@@ -73,7 +73,7 @@ describe("routes : posts", () => {
             expect(post).not.toBeNull();
             expect(post.title).toBe("Watching snow melt");
             expect(post.body).toBe(
-              "Without a doubt my favoriting things to do besides watching paint dry!"
+              "Without a doubt my favorite things to do besides watching paint dry!"
             );
             expect(post.topicId).not.toBeNull();
             done();
@@ -89,12 +89,12 @@ describe("routes : posts", () => {
       const options = {
         url: `${base}/${this.topic.id}/posts/create`,
         form: {
-          title: "1",
-          body: "2"
+          title: "hola",
+          body: "adios"
         }
       };
       request.post(options, (err, req, body) => {
-        Post.findOne({ where: { title: "1" } })
+        Post.findOne({ where: { title: "hola" } })
           .then(post => {
             expect(post).toBeNull();
             done();

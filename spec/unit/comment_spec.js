@@ -126,7 +126,7 @@ describe("Comment", () => {
     it("should associate a post and a comment together", done => {
       Post.create({
         title: "Dress code on Proxima b",
-        body: "Spacesuit, space helmet, space boots, and space gloves",
+        body: "Space suit, space helmet, space boots, and space gloves",
         topicId: this.topic.id,
         userId: this.user.id
       }).then(newPost => {
