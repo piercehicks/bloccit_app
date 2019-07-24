@@ -4,6 +4,7 @@ module.exports = {
     const topicRoutes = require("../routes/topics");
     const advertisementRoutes = require("../routes/advertisements");
     const postRoutes = require("../routes/posts");
+    const voteRoutes = require("../routes/votes");
     const flairRoutes = require("../routes/flairs");
     const commentRoutes = require("../routes/comments");
 
@@ -17,6 +18,7 @@ module.exports = {
     app.use(topicRoutes);
    app.use(advertisementRoutes);
     app.use(postRoutes);
+    app.use(voteRoutes);
     app.use(userRoutes);
     app.use(commentRoutes);
     app.use(flairRoutes);

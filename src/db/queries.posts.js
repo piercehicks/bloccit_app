@@ -1,4 +1,5 @@
 const Post = require("./models").Post;
+const Vote = require("./models").Vote;
 const Comment = require("./models").Comment;
 const User = require("./models").User;
 const Topic = require("./models").Topic;
@@ -15,7 +16,10 @@ module.exports = {
   },
   getPost(id, callback) {
     return Post.findByPk(id, {
-      include: [{ model: Comment, as: "comments", include: [{ model: User }] }]
+      include: [
+        { model: Comment, as: "comments", include: [{ model: User }] },
+        { model: Vote, as: "votes" }
+      ]
     })
       .then(post => {
         callback(null, post);
