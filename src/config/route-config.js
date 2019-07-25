@@ -8,8 +8,8 @@ module.exports = {
     const flairRoutes = require("../routes/flairs");
     const commentRoutes = require("../routes/comments");
     const favoriteRoutes = require("../routes/favorites");
-
     const userRoutes = require("../routes/users");
+
     if (process.env.NODE_ENV === "test") {
       const mockAuth = require("../../spec/support/mock-auth.js");
       mockAuth.fakeIt(app);

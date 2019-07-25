@@ -139,8 +139,8 @@ describe("routes : favorites", () => {
       });
     });
 
-    describe("POST /topics/:topicId/posts/:postId/favorites/:id/destroy", () => {
-      it("should destroy a favorite", done => {
+    describe("POST /topics/:topicId/posts/:postId/favorites/destroy", () => {
+      fit("should destroy a favorite", done => {
         const options = {
           url: `${base}${this.topic.id}/posts/${this.post.id}/favorites/create`
         };
@@ -149,15 +149,14 @@ describe("routes : favorites", () => {
 
         request.post(options, (err, res, body) => {
           this.post.getFavorites().then(favorites => {
-            const favorite = favorites[0];
             favCountBeforeDelete = favorites.length;
+            console.log("favCountBeforeDelete",favCountBeforeDelete);
 
             request.post(
-              `${base}${this.topic.id}/posts/${this.post.id}/favorites/${
-                favorite.id
-              }/destroy`,
+              `${base}${this.topic.id}/posts/${this.post.id}/favorites/destroy`,
               (err, res, body) => {
                 this.post.getFavorites().then(favorites => {
+                  console.log(favorites);
                   expect(favorites.length).toBe(favCountBeforeDelete - 1);
                   done();
                 });
