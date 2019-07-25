@@ -24,24 +24,34 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Post.associate = function(models) {
-    // associations can be defined here
-    Post.belongsTo(models.Topic, {
-      foreignKey: "topicId",
-      onDelete: "CASCADE"
-    });
-    Post.hasMany(models.Comment, {
-      foreignKey: "postId",
-      as: "comments"
-    });
-    Post.belongsTo(models.User, {
-     foreignKey: "userId",
-     onDelete: "CASCADE"
-   });
-   Post.hasMany(models.Vote, {
-       foreignKey: "postId",
-       as: "votes"
-   });
-};
+        Post.belongsTo(models.Topic, {
+            foreignKey: "topicId",
+            onDelete: "CASCADE"
+        });
+        Post.belongsTo(models.User, {
+            foreignKey: "userId",
+            onDelete: "CASCADE"
+        });
+        Post.hasMany(models.Comment, {
+            foreignKey: "postId",
+            as: "comments"
+        });
+
+        Post.hasMany(models.Vote, {
+            foreignKey: "postId",
+            as: "votes"
+        });
+        Post.hasMany(models.Favorite, {
+            foreignKey: "postId",
+            as: "favorites"
+        });
+        Post.afterCreate((post, callback) => {
+            return models.Favorite.create({
+                userId: post.userId,
+                postId: post.id
+            });
+        });
+    };
 
 Post.prototype.getPoints = function() {
    if (this.votes.length === 0) return 0;
@@ -68,5 +78,10 @@ Post.prototype.getPoints = function() {
     });
     return foundDownvote.length === 1;
   };
+  Post.prototype.getFavoriteFor = function(userId) {
+        return this.favorites.find(favorite => {
+            return favorite.userId == userId;
+        });
+    };
   return Post;
 };
