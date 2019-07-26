@@ -9,7 +9,7 @@ router.post(
 );
 
 router.post(
-    "/topics/:topicId/posts/:postId/favorites/destroy",
+    "/topics/:topicId/posts/:postId/favorites/:id/destroy",
     favoriteController.destroy
 );
 

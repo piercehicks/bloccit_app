@@ -1,8 +1,9 @@
 const Comment = require("./models").Comment;
 const Post = require("./models").Post;
 const Favorite = require("./models").Favorite;
-const Authorizer = require("../policies/favorite");
 const User = require("./models").User;
+const Authorizer = require("../policies/favorite");
+
 
 
 module.exports = {
