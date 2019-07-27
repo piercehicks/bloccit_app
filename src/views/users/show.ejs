@@ -1,55 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../static/partials/head.ejs %>
-  </head>
-  <body>
+<head>
+<% include ../static/partials/head.ejs %>
+</head>
 
-    <% include ../static/partials/navbar.ejs %>
+<body>
 
-    <main class="container">
+<% include ../static/partials/navbar.ejs %>
 
-      <% include ../static/partials/messages.ejs %>
+  <main class="container">
 
-      <h1><%= `${user.email}'s profile` %></h1>
+    <% include ../static/partials/messages.ejs %>
+    <h1>
+          <%= `${user.email}'s profile` %>
+        </h1>
 
-      <hr>
+        <hr>
 
-      <h2> Latest Posts</h2>
+        <h2> Latest Posts</h2>
 
-      <ul class="list-unstyled">
+        <ul class="list-unstyled">
 
-        <% if(posts) { %>
-          <% posts.forEach((post) => { %>
-            <li>
-              <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>">
-                <%= post.title %>
-              </a>
-            </li>
-          <% }) %>
-        <% } %>
-      </ul>
-      <hr>
 
-      <h2> Latest Comments</h2>
+          <% if(posts) { %>
+            <% posts.forEach((post) => { %>
+              <li>
+                <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>">
+                  <%= post.title %>
+                </a>
+              </li>
+              <% }) %>
+                <% } %>
+        </ul>
+        <hr>
 
-      <ul class="list-unstyled">
+        <h2> Latest Comments</h2>
 
-        <% if(comments) { %>
-          <% comments.forEach((comment) => { %>
-            <li>
-              <span>Post: </span><a href="/topics/<%= comment.Post.topicId %>/posts/<%= comment.Post.id %>">
-                <%= comment.Post.title %>
-              </a>
-              <p>Comment: <%= comment.body %></p>
-            </li>
-            <hr>
-          <% }) %>
-        <% } %>
-      </ul>
+        <ul class="list-unstyled">
+
+
+          <% if(comments) { %>
+            <% comments.forEach((comment) => { %>
+              <li>
+                <span>Post: </span>
+                <a href="/topics/<%= comment.Post.topicId %>/posts/<%= comment.Post.id %>">
+                  <%= comment.Post.title %>
+                </a>
+                <p>Comment:
+                  <%= comment.body %>
+                </p>
+              </li>
+              <hr>
+              <% }) %>
+                <% } %>
+        </ul>
+
+
+        <hr>
+
+        <h2> Favorite Posts</h2>
+
+        <ul class="list-unstyled">
+
+          <% if(favorites) { %>
+            <% favorites.forEach((favorite) => { %>
+              <li>
+                <span>Post: </span>
+                <a href="/topics/<%= favorite.postId %>/posts/<%= favorite.postId %>">
+                  <%= favorite.Post.title %>
+                </a>
+              </li>
+              <% }) %>
+                <% } %>
+        </ul>
+
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
 
-  </body>
+  
+</body>
+
 </html>
