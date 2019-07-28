@@ -149,14 +149,15 @@ describe("routes : favorites", () => {
 
         request.post(options, (err, res, body) => {
           this.post.getFavorites().then(favorites => {
+            const favorite = favorites[0];
             favCountBeforeDelete = favorites.length;
-            console.log("favCountBeforeDelete",favCountBeforeDelete);
 
             request.post(
-              `${base}${this.topic.id}/posts/${this.post.id}/favorites/destroy`,
+              `${base}${this.topic.id}/posts/${this.post.id}/favorites/${
+                favorite.id
+              }/destroy`,
               (err, res, body) => {
                 this.post.getFavorites().then(favorites => {
-                  console.log(favorites);
                   expect(favorites.length).toBe(favCountBeforeDelete - 1);
                   done();
                 });
