@@ -139,8 +139,8 @@ describe("routes : favorites", () => {
       });
     });
 
-    describe("POST /topics/:topicId/posts/:postId/favorites/destroy", () => {
-      fit("should destroy a favorite", done => {
+    describe("POST /topics/:topicId/posts/:postId/favorites/:id/destroy", () => {
+      it("should destroy a favorite", done => {
         const options = {
           url: `${base}${this.topic.id}/posts/${this.post.id}/favorites/create`
         };
