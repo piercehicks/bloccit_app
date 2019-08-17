@@ -246,43 +246,4 @@ describe("Vote", () => {
     });
   });
 
-  describe("#hasUpvoteFor()", () => {
-    it("should return true if user has an upvote for this post", done => {
-      Vote.create({
-        value: 1,
-        postId: this.post.id,
-        userId: this.user.id
-      })
-        .then(vote => {
-          this.post.votes = vote;
-          const hasUpvote = this.post.hasUpvoteFor(vote.userId);
-          expect(hasUpvote).toBe(true);
-          done();
-        })
-        .catch(err => {
-          console.log(err);
-          done();
-        });
-    });
-  });
-
-  describe("#hasDownvoteFor()", () => {
-    it("should return true if user has downvoted this post", done => {
-      Vote.create({
-        value: -1,
-        postId: this.post.id,
-        userId: this.user.id
-      })
-        .then(vote => {
-          this.post.votes = vote;
-          const hasDownvote = this.post.hasDownvoteFor(vote.userId);
-          expect(hasDownvote).toBe(true);
-          done();
-        })
-        .catch(err => {
-          console.log(err);
-          done();
-        });
-    });
-  });
 });
